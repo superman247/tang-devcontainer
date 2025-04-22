@@ -1,25 +1,27 @@
 {
   "name": "Music Assistant Dev",
-  "dockerFile": "Dockerfile",
-  "context": "..",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "backend",
+  "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
-        "python.pythonPath": "/workspace/music_assistant/venv/bin/python"
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python"
       },
       "extensions": [
         "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-vscode.vscode-typescript-next",
         "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker"
       ]
     }
   },
+  "postCreateCommand": "pip install -r requirements.txt",
+  "remoteUser": "vscode",
   "mounts": [
-    "source=music_assistant_data,target=/workspace/music_assistant_data,type=volume"
-  ],
-  "postCreateCommand": "bash .devcontainer/setup.sh",
-  "remoteUser": "vscode"
+    "source=${localWorkspaceFolder}/samples,target=/workspace/samples,type=bind"
+  ]
 }

@@ -1,14 +1,22 @@
-FROM mcr.microsoft.com/devcontainers/python:3.12
+# Dockerfile
+FROM python:3.11-slim
 
-# Install Node.js for the TypeScript part
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git curl build-essential && \
+    apt-get clean
 
-# Set up zsh and git
-RUN apt-get update && apt-get install -y zsh git && \
-    chsh -s $(which zsh)
+# Create app directory
+WORKDIR /workspace
 
-# Optional: Install Poetry or other Python tools
-RUN pip install --upgrade pip && pip install virtualenv
+# Copy requirements
+COPY requirements.txt .
 
-WORKDIR /workspace/music_assistant
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy rest of app
+COPY . .
+
+# Default command
+CMD ["python", "backend/main.py"]
