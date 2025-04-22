@@ -1,0 +1,23 @@
+# Music Assistant 🎵🧠
+
+**Music Assistant** is a personal tool designed to enhance music production workflows, starting with integration and support for FL Studio.
+
+## 🚀 Features
+
+- Modular architecture for plugin tools
+- Project-based task assistant for producers
+- Designed to support automation, visualization, and creative inspiration
+
+## 📦 Tech Stack
+
+- Python (or Node.js / customize as needed)
+- Docker + Devcontainers
+- GitHub Actions (planned CI/CD)
+- Future plugin SDK for FL Studio
+
+## 🛠️ Development Setup
+
+```bash
+git clone git@github.com:your-username/music-assistant.git
+cd music-assistant
+code .

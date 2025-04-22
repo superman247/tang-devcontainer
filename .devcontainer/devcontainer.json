@@ -1,0 +1,25 @@
+{
+  "name": "Music Assistant Dev",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "python.pythonPath": "/workspace/music_assistant/venv/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "mounts": [
+    "source=music_assistant_data,target=/workspace/music_assistant_data,type=volume"
+  ],
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "remoteUser": "vscode"
+}
