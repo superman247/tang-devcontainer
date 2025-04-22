@@ -8,3 +8,9 @@ node_modules/
 
 # VS Code
 .vscode/
+
+.env
+
+.venv/
+
+dist/
